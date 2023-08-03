@@ -2,8 +2,11 @@ package com.example.harrypotter
 
 import CharacterAdapter
 import android.R
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.harrypotter.databinding.ActivityMainBinding
@@ -21,6 +24,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.buttonNavigate.setOnClickListener {
+            onNavigateButtonClick();
+        }
+
+
 
         var  userListState = mutableListOf<CharacterEntity>()
         userListState.add(CharacterEntity(
@@ -67,6 +76,14 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, "Error", Toast.LENGTH_SHORT).show()
                 }
             })
+    }
+    private fun onNavigateButtonClick() {
+        try {
+            val intent = Intent(this, CharacterActivity::class.java)
+            startActivity(intent)
+        } catch (e: Exception) {
+            Log.e("ActivityStartError", "Error starting CharacterActivity", e)
+        }
     }
 
 

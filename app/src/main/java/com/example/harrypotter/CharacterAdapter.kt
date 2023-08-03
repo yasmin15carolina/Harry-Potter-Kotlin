@@ -13,14 +13,14 @@ import com.example.harrypotter.R
 
 
 class CharacterAdapter(context: Context, characters: List<CharacterEntity>) :
-    ArrayAdapter<CharacterEntity>(context, R.layout.activity_list_item, characters) {
+    ArrayAdapter<CharacterEntity>(context, R.layout.charcter_list_item, characters) {
 
     // O método getView é chamado para cada item da lista, definindo como o item deve ser exibido.
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var itemView = convertView
 
         if (itemView == null) {
-            itemView = LayoutInflater.from(context).inflate(R.layout.activity_list_item, parent, false)
+            itemView = LayoutInflater.from(context).inflate(R.layout.charcter_list_item, parent, false)
         }
 
         val character = getItem(position)
