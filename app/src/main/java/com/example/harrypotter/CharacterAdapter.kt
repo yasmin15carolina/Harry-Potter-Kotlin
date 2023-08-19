@@ -33,10 +33,18 @@ class CharacterAdapter(context: Context, characters: List<CharacterEntity>) :
 
         val imageUrl = character?.img
         if (photoImageView != null) {
+
+
+
             Glide.with(context)
                 .load(imageUrl)
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL))
+                .error(R.drawable.baseline_camera_alt_24)
                 .into(photoImageView)
+
+            photoImageView.layoutParams.height = 300;
+            photoImageView.scaleType = ImageView.ScaleType.CENTER_INSIDE
+
         }
 
         itemView?.setOnClickListener {

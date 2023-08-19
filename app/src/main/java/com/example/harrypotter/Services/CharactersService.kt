@@ -13,4 +13,7 @@ interface CharactersService {
     @GET("character/{id}")
     fun listDetails(@Path(value="id") todoId: String): Call<List<CharacterDetails>>
 
+    @GET("characters/house/{house}")
+    fun listHouseCharacters(@Path(value="house") todoHouse: String): Call<List<CharacterEntity>>
+
 }
