@@ -1,4 +1,6 @@
 import android.content.Context
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,14 +10,13 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.example.harrypotter.CharacterEntity
+import com.example.harrypotter.CharacterActivity
+import com.example.harrypotter.Entities.CharacterEntity
 import com.example.harrypotter.R
-
 
 class CharacterAdapter(context: Context, characters: List<CharacterEntity>) :
     ArrayAdapter<CharacterEntity>(context, R.layout.charcter_list_item, characters) {
 
-    // O método getView é chamado para cada item da lista, definindo como o item deve ser exibido.
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var itemView = convertView
 
@@ -25,23 +26,36 @@ class CharacterAdapter(context: Context, characters: List<CharacterEntity>) :
 
         val character = getItem(position)
 
-        // Aqui você pode definir os atributos do objeto que deseja exibir na lista.
-        // Neste exemplo, estamos exibindo apenas o nome do personagem (name).
         val nameTextView = itemView?.findViewById<TextView>(R.id.nameTextView)
         nameTextView?.text = character?.name
 
         val photoImageView = itemView?.findViewById<ImageView>(R.id.photoImageView)
 
-        val imageUrl = character?.img// Substitua a URL real da imagem aqui.
+        val imageUrl = character?.img
         if (photoImageView != null) {
             Glide.with(context)
                 .load(imageUrl)
-                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)) // Opcional: para armazenar a imagem em cache.
+                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL))
                 .into(photoImageView)
+        }
+
+        itemView?.setOnClickListener {
+            onNavigateButtonClick(character)
         }
 
         return itemView!!
     }
+
+    private fun onNavigateButtonClick(character: CharacterEntity?) {
+        try {
+            val intent = Intent(context, CharacterActivity::class.java)
+            intent.putExtra("characterId", character?.id) // Passar algum ID ou dados relevantes para a próxima atividade
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            Log.e("ActivityStartError", "Error starting CharacterActivity", e)
+        }
+    }
+
     fun updateData(newCharacters: List<CharacterEntity>) {
         clear()
         addAll(newCharacters)

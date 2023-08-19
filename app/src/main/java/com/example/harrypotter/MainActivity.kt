@@ -1,17 +1,15 @@
 package com.example.harrypotter
 
 import CharacterAdapter
-import android.R
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.Toast
+import com.example.harrypotter.Entities.CharacterEntity
+import com.example.harrypotter.Services.CharactersService
 import com.example.harrypotter.databinding.ActivityMainBinding
-import com.example.myapplication.RetrofitClient
-import com.google.gson.internal.bind.ArrayTypeAdapter
+import com.example.harrypotter.Services.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,20 +23,16 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buttonNavigate.setOnClickListener {
-            onNavigateButtonClick();
-        }
-
-
-
         var  userListState = mutableListOf<CharacterEntity>()
-        userListState.add(CharacterEntity(
+        userListState.add(
+            CharacterEntity(
             id = "1",
             name = "Harry Potter",
             house = "Gryffindor",
             actor = "Daniel Radcliffe",
             img = "https://example.com/harry_potter.jpg"
-        ))
+        )
+        )
         val adapter = CharacterAdapter(this, userListState)
         binding.listview.adapter = adapter
 
