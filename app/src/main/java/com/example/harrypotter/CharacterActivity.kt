@@ -19,7 +19,6 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.harrypotter.Entities.CharacterDetails
 import com.example.harrypotter.Entities.CharacterEntity
 import com.example.harrypotter.Services.CharactersService
-import com.example.harrypotter.Services.RetrofitClient
 import com.example.harrypotter.databinding.ActivityCharacterBinding
 import com.example.harrypotter.databinding.ContentCharacterBinding
 import retrofit2.Call

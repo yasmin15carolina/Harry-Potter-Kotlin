@@ -29,6 +29,9 @@ class CharacterAdapter(context: Context, characters: List<CharacterEntity>) :
         val nameTextView = itemView?.findViewById<TextView>(R.id.nameTextView)
         nameTextView?.text = character?.name
 
+        val birthTextView = itemView?.findViewById<TextView>(R.id.birthtxt)
+        birthTextView?.text = character?.birth
+
         val photoImageView = itemView?.findViewById<ImageView>(R.id.photoImageView)
 
         val imageUrl = character?.img

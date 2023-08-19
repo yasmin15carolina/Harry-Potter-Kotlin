@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.content.ContextCompat
+import com.example.harrypotter.R
 import com.example.harrypotter.databinding.ActivityHousesBinding
 
 class HousesActivity : AppCompatActivity() {
@@ -14,6 +16,9 @@ class HousesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHousesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.black)
+        window.statusBarColor =ContextCompat.getColor(this, R.color.transparent)
 
         binding.gryffindor.setOnClickListener(){
           onNavigateButtonClick("gryffindor");

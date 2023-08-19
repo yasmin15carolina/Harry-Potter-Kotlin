@@ -1,27 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gridLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="16dp">
+
     <ImageView
         android:id="@+id/photoImageView"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_column="0"
-        android:layout_row="0"
-        android:layout_columnSpan="2"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:scaleType="fitCenter"
         android:src="@drawable/baseline_camera_alt_24"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="textStart"
-        android:textSize="16sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
         android:paddingLeft="15dp"
-        android:textColor="@android:color/black"/>
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/photoImageView"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</GridLayout>
+    <TextView
+        android:id="@+id/birthtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="15dp"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/nameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

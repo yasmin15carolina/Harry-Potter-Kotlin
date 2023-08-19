@@ -5,11 +5,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.harrypotter.CharacterActivity
 import com.example.harrypotter.Entities.CharacterEntity
+import com.example.harrypotter.R
 import com.example.harrypotter.Services.CharactersService
-import com.example.harrypotter.Services.RetrofitClient
 import com.example.harrypotter.databinding.ActivityHouseCharactersBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,6 +25,7 @@ class HouseCharactersActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHouseCharactersBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)
 
         var userListState = mutableListOf<CharacterEntity>()
         /* userListState.add(
@@ -55,9 +58,6 @@ class HouseCharactersActivity : AppCompatActivity() {
                         print("hello stupid");
                         var list = response.body();
                         print(list);
-                        //binding.texto.text = list?.get(0)?.house.toString()
-                        ///lista = listOf(list[0])
-                        //teste = { mutableStateOf(list?.get(0)?.email.toString()) }
 
                         list?.let {
                             // Set the value of the userListState with the retrieved list
