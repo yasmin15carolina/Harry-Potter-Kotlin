@@ -4,8 +4,7 @@
     android:theme="@style/Base.Theme.HarryPotter"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8E8C8C"
-    tools:context=".Activities.HousesActivity">
+    android:background="#8E8C8C">
 
     <!-- Primeira imagem -->
     <ImageView
@@ -13,9 +12,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@id/ravenclaw"
+        app:layout_constraintBottom_toTopOf="@+id/ravenclaw"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@id/hufflepuff"
+        app:layout_constraintEnd_toStartOf="@+id/hufflepuff"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/gryffindor" />
@@ -26,10 +25,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@id/slytherin"
+        app:layout_constraintBottom_toTopOf="@+id/slytherin"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/gryffindor"
+        app:layout_constraintStart_toEndOf="@+id/gryffindor"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/hufflepuff" />
 
@@ -41,9 +40,9 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@id/slytherin"
+        app:layout_constraintEnd_toStartOf="@+id/slytherin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gryffindor"
+        app:layout_constraintTop_toBottomOf="@+id/gryffindor"
         app:srcCompat="@drawable/ravenclaw" />
 
     <!-- Quarta imagem -->
@@ -55,8 +54,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ravenclaw"
-        app:layout_constraintTop_toBottomOf="@id/hufflepuff"
+        app:layout_constraintStart_toEndOf="@+id/ravenclaw"
+        app:layout_constraintTop_toBottomOf="@+id/hufflepuff"
         app:srcCompat="@drawable/slytherin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
