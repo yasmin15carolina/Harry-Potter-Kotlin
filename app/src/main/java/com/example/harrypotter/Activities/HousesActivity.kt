@@ -1,50 +1,61 @@
-package com.example.harrypotter.Activities
+package com.example.harrypotter.Fragments
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import com.example.harrypotter.Activities.HouseCharactersActivity
 import com.example.harrypotter.R
-import com.example.harrypotter.databinding.ActivityHousesBinding
+import com.example.harrypotter.databinding.FragmentHousesBinding
 
-class HousesActivity : AppCompatActivity() {
+class HousesFragment : Fragment() {
 
-    private lateinit var binding:ActivityHousesBinding
+    private lateinit var binding: FragmentHousesBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityHousesBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        window.navigationBarColor = ContextCompat.getColor(this, R.color.black)
-        window.statusBarColor =ContextCompat.getColor(this, R.color.transparent)
-
-        binding.gryffindor.setOnClickListener(){
-          onNavigateButtonClick("gryffindor");
-        }
-
-        binding.hufflepuff.setOnClickListener(){
-            onNavigateButtonClick("hufflepuff");
-        }
-
-        binding.ravenclaw.setOnClickListener(){
-            onNavigateButtonClick("ravenclaw");
-        }
-
-        binding.slytherin.setOnClickListener(){
-            onNavigateButtonClick("slytherin");
-        }
-
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentHousesBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    private fun onNavigateButtonClick( house: String) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().window.navigationBarColor =
+            ContextCompat.getColor(requireContext(), R.color.black)
+        requireActivity().window.statusBarColor =
+            ContextCompat.getColor(requireContext(), R.color.transparent)
+
+        binding.gryffindor.setOnClickListener {
+            onNavigateButtonClick("gryffindor")
+        }
+
+        binding.hufflepuff.setOnClickListener {
+            onNavigateButtonClick("hufflepuff")
+        }
+
+        binding.ravenclaw.setOnClickListener {
+            onNavigateButtonClick("ravenclaw")
+        }
+
+        binding.slytherin.setOnClickListener {
+            onNavigateButtonClick("slytherin")
+        }
+    }
+
+    private fun onNavigateButtonClick(house: String) {
         try {
-            val intent = Intent(this, HouseCharactersActivity::class.java)
+            val intent = Intent(requireContext(), HouseCharactersActivity::class.java)
             intent.putExtra("house", house)
             startActivity(intent)
         } catch (e: Exception) {
-            Log.e("ActivityStartError", "Error starting CharacterActivity", e)
+            Log.e("FragmentStartError", "Error starting HouseCharactersActivity", e)
         }
     }
 }

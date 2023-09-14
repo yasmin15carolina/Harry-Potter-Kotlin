@@ -41,6 +41,7 @@ class HouseCharactersActivity : AppCompatActivity() {
 
         val adapter = CharacterAdapter(this, userListState)
         binding.listview.adapter = adapter
+        binding.progressBar.visibility = View.VISIBLE
 
         var nome: String = "yas";
 
@@ -65,12 +66,13 @@ class HouseCharactersActivity : AppCompatActivity() {
                             userListState = it.toMutableList()
                             adapter.updateData(userListState)
                         }
-
-
+                        binding.progressBar.visibility = View.GONE
                     }
 
                     override fun onFailure(call: Call<List<CharacterEntity>>, t: Throwable) {
                         Toast.makeText(applicationContext, "Error", Toast.LENGTH_SHORT).show()
+                        binding.progressBar.visibility = View.GONE
+
                     }
                 })
         }

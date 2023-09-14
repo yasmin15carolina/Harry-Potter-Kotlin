@@ -1,8 +1,6 @@
 package com.example.harrypotter.Entities
 
 import com.google.gson.annotations.SerializedName
-import java.util.Date
-import org.threeten.bp.LocalDate
 
 class CharacterEntity(
     @SerializedName("id") var id: String = "",
@@ -10,7 +8,9 @@ class CharacterEntity(
     @SerializedName("house") var house: String = "",
     @SerializedName("actor") var actor: String = "",
     @SerializedName("image") var img: String = "",
-    @SerializedName("dateOfBirth") var birth: String = ""
+    @SerializedName("ancestry") var ancestry: String = "",
+    @SerializedName("dateOfBirth") var birth: String = "",
+
 ) {
 
 }

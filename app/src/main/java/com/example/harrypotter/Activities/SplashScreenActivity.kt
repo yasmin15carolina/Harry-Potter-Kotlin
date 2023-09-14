@@ -17,7 +17,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         binding.ivNote.alpha = 0f;
         binding.ivNote.animate().setDuration(1500).alpha(1f).withEndAction(){
-            val intent = Intent(this, HousesActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             overridePendingTransition(android.R.anim.fade_in,(android.R.anim.fade_out))
             finish()

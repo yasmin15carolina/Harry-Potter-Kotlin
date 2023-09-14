@@ -41,6 +41,15 @@ class CharacterActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
+
+        // Set navigation icon
+        binding.toolbar.setNavigationIcon(R.drawable.ios_back_arrow)
+
+        // Set navigation icon click listener
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressed() // This will simulate the "back" action
+        }
+
         val navController = findNavController(R.id.nav_host_fragment_content_character)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -69,6 +78,8 @@ class CharacterActivity : AppCompatActivity() {
 
                         val characterInfo = list?.get(0);
 
+                        getSupportActionBar()?.setTitle(characterInfo?.name);
+
                         val inflatedView = inflater.inflate(R.layout.fragment_first, null)
 
                         val txtCharacterName= inflatedView?.findViewById<TextView>(R.id.txtCharacterName)
@@ -77,7 +88,9 @@ class CharacterActivity : AppCompatActivity() {
                             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_character)
                         val firstFragment = navHostFragment?.childFragmentManager?.fragments?.firstOrNull { it is FirstFragment } as? FirstFragment
 
-                        firstFragment?.view?.findViewById<TextView>(R.id.txtCharacterName)?.text = characterInfo?.name
+                        firstFragment?.view?.findViewById<TextView>(R.id.txtCharacterName)?.text ="Name: ${ characterInfo?.name}"
+                        firstFragment?.view?.findViewById<TextView>(R.id.txtActorName)?.text = "Actor: ${ characterInfo?.actor}"
+                        firstFragment?.view?.findViewById<TextView>(R.id.txtHouseName)?.text = "House: ${ characterInfo?.house}"
                         val imageUrl = characterInfo?.img
                         if (firstFragment?.view?.findViewById<ImageView>(R.id.imgCharacter) != null) {
                             Glide.with(firstFragment)

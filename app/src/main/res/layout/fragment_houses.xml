@@ -4,7 +4,8 @@
     android:theme="@style/Base.Theme.HarryPotter"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8E8C8C">
+    android:background="#8E8C8C"
+    tools:context=".Activities.HomeActivity">
 
     <!-- Primeira imagem -->
     <ImageView

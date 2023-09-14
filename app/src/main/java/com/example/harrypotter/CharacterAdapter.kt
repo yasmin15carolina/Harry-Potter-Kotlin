@@ -13,6 +13,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.harrypotter.CharacterActivity
 import com.example.harrypotter.Entities.CharacterEntity
 import com.example.harrypotter.R
+import java.util.Locale
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CharacterAdapter(context: Context, characters: List<CharacterEntity>) :
     ArrayAdapter<CharacterEntity>(context, R.layout.charcter_list_item, characters) {
@@ -29,8 +32,23 @@ class CharacterAdapter(context: Context, characters: List<CharacterEntity>) :
         val nameTextView = itemView?.findViewById<TextView>(R.id.nameTextView)
         nameTextView?.text = character?.name
 
-        val birthTextView = itemView?.findViewById<TextView>(R.id.birthtxt)
-        birthTextView?.text = character?.birth
+        val ancestryTextView = itemView?.findViewById<TextView>(R.id.ancestrytxt)
+        ancestryTextView?.text = character?.ancestry
+
+        val inputFormat = SimpleDateFormat("dd-MM-yyyy", Locale.US)
+        val outputFormat = SimpleDateFormat("MMMM, dd. yyyy", Locale.US)
+
+        try {
+            val date = inputFormat.parse(character?.birth)
+            val formattedDate = outputFormat.format(date)
+            println(formattedDate) // This will print "1979-09-19"
+            val birthTextView = itemView?.findViewById<TextView>(R.id.birthtxt)
+            birthTextView?.text = "Birth: $formattedDate"
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+
 
         val photoImageView = itemView?.findViewById<ImageView>(R.id.photoImageView)
 

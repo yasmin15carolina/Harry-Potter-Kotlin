@@ -15,8 +15,11 @@
         android:theme="@style/Theme.HarryPotter"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.SplashScreenActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,9 +28,7 @@
         </activity>
         <activity
             android:name=".Activities.HousesActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".CharacterActivity"
             android:exported="false"
@@ -35,7 +36,7 @@
             android:theme="@style/Theme.HarryPotter" />
         <activity
             android:name=".Activities.HouseCharactersActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>
